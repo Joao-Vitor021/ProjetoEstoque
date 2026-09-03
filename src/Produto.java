@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Produto {
-    ArrayList<Integer> lista = new ArrayList<>();
+    private static ArrayList<Integer> lista = new ArrayList<>();
     private int id;
     private String nome;
     private double preco;
@@ -32,16 +32,11 @@ public class Produto {
     }
 
     public void setNome(String nome) {
-        if (nome.isBlank()) {
+        if (nome == null || nome.isBlank()) {
 
             throw new IllegalArgumentException("Erro: NÃO E PERMITIDO NOME VAZIO ");
         }
-        for (int i = 0; i < nome.length(); i++) {
-            if (Character.isDigit(nome.charAt(i))) {
-                throw new IllegalArgumentException("Erro: NÃO E PERMITIDO NÚMEROS NO NOME");
-            }
 
-        }
         this.nome = nome;
     }
 
@@ -67,5 +62,9 @@ public class Produto {
         } else {
             this.quant = quant;
         }
+    }
+
+    public int getId() {
+        return id;
     }
 }
