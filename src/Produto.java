@@ -10,27 +10,10 @@ public class Produto {
 
     public Produto(String nome, double preco, int quant) {
 
-        if (nome.isBlank()) {
 
-            throw new IllegalArgumentException("Erro: NÃO E PERMITIDO ESPAÇO VAZIO ");
-        }
-        for (int i = 0; i < nome.length(); i++) {
-            if (Character.isDigit(nome.charAt(i))) {
-                throw new IllegalArgumentException("Erro: NÃO E PERMITIDO NÚMEROS NO NOME");
-            }
-
-        }
-        this.nome = nome;
-        if (preco < 0) {
-            throw new IllegalArgumentException("Erro: PREÇO INVÁLIDO!");
-        } else {
-            this.preco = preco;
-        }
-        if (quant < 0) {
-            throw new IllegalArgumentException("Erro: QUANTIDADE INVÁLIDA!");
-        } else {
-            this.quant = quant;
-        }
+        this.setNome(nome);
+        this.setPreco(preco);
+        this.setQuant(quant);
 
         do {
             this.id = (int) (Math.random() * 10000 + 1);
@@ -49,6 +32,16 @@ public class Produto {
     }
 
     public void setNome(String nome) {
+        if (nome.isBlank()) {
+
+            throw new IllegalArgumentException("Erro: NÃO E PERMITIDO NOME VAZIO ");
+        }
+        for (int i = 0; i < nome.length(); i++) {
+            if (Character.isDigit(nome.charAt(i))) {
+                throw new IllegalArgumentException("Erro: NÃO E PERMITIDO NÚMEROS NO NOME");
+            }
+
+        }
         this.nome = nome;
     }
 
@@ -57,7 +50,11 @@ public class Produto {
     }
 
     public void setPreco(double preco) {
-        this.preco = preco;
+        if (preco <= 0) {
+            throw new IllegalArgumentException("Erro: PREÇO INVÁLIDO!");
+        } else {
+            this.preco = preco;
+        }
     }
 
     public int getQuant() {
@@ -65,6 +62,10 @@ public class Produto {
     }
 
     public void setQuant(int quant) {
-        this.quant = quant;
+        if (quant <= 0) {
+            throw new IllegalArgumentException("Erro: QUANTIDADE INVÁLIDA!");
+        } else {
+            this.quant = quant;
+        }
     }
 }
