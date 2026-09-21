@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Estoque {
     ArrayList<Produto> estoque;
+    Scanner entrada = new Scanner(System.in);
 
     public Estoque() {
         estoque = new ArrayList<>();
@@ -19,15 +21,16 @@ public class Estoque {
         }
     }
 
-    public void buscarId(int id) {
+    public Produto buscarId(int id) {
         for (Produto buscar : estoque) {
             if (id == buscar.getId()) {
                 System.out.println(buscar + "\n");
-                return;
+                return buscar;
             }
 
         }
         System.out.println("Produto não encontrado");
+        return null;
     }
 
     public void removerId(int id) {
@@ -40,7 +43,51 @@ public class Estoque {
         }
         System.out.println("Produto não encontrado");
     }
+
+    public void atualizarProduto(int id) {
+        Produto p1 = buscarId(id);
+        boolean rodando = true;
+        while (rodando) {
+            System.out.println("1- Atualizar nome \n2- Atualizar preço \n3- Atualizar quantidade \n4- Finalizar atualizações ");
+            int opcao = entrada.nextInt();
+            entrada.nextLine();
+
+
+            switch (opcao) {
+                case 1 : {
+                    System.out.println("Digite o nome novo: ");
+                    String nome = entrada.nextLine();
+                    p1.setNome(nome);
+                    break;
+                }
+                case 2 : {
+                    System.out.println("Digite o preço novo: ");
+                    double preco = entrada.nextDouble();
+                    p1.setPreco(preco);
+                    break;
+                }
+                case 3 : {
+                    System.out.println("Digite a quantidade nova: ");
+                    int quant = entrada.nextInt();
+                    p1.setQuant(quant);
+                    break;
+                }
+                case 4 : {
+                    System.out.println("Atualizações finalizadas ");
+                    rodando = false;
+                    break;
+                }
+
+                default:
+                    System.out.println("Opção inválida! ");
+            }
+        }
+
+    }
+
+
 }
+
 
 
 
