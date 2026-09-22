@@ -35,17 +35,20 @@ public class Estoque {
     }
 
     public void removerId(int id) {
-        for (Produto buscar : estoque) {
-            if (id == buscar.getId()) {
-                estoque.remove(buscar);
-                return;
-            }
+        for (int i = 0; i <estoque.size(); i++){
+            if (estoque.get(i).getId() == id) {
+                System.out.printf("%s removido com sucesso\n",estoque.get(i).getNome());
+                estoque.remove(i);
 
+                return;
+
+            }
         }
         System.out.println("Produto não encontrado");
     }
 
     public void atualizarProduto(int id) {
+
         Produto p1 = buscarId(id);
         boolean rodando = true;
         while (rodando) {
@@ -55,25 +58,25 @@ public class Estoque {
 
 
             switch (opcao) {
-                case 1 : {
+                case 1: {
                     System.out.println("Digite o nome novo: ");
                     String nome = entrada.nextLine();
                     p1.setNome(nome);
                     break;
                 }
-                case 2 : {
+                case 2: {
                     System.out.println("Digite o preço novo: ");
                     double preco = entrada.nextDouble();
                     p1.setPreco(preco);
                     break;
                 }
-                case 3 : {
+                case 3: {
                     System.out.println("Digite a quantidade nova: ");
                     int quant = entrada.nextInt();
                     p1.setQuant(quant);
                     break;
                 }
-                case 4 : {
+                case 4: {
                     System.out.println("Atualizações finalizadas ");
                     rodando = false;
                     break;

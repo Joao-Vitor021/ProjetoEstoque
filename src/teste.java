@@ -35,19 +35,51 @@ public class teste {
 
                 case 3: {
                     System.out.println("Produtos disponiveis");
-                    for(Produto mostrar : e1.getEstoque()) {
+                    for (Produto mostrar : e1.getEstoque()) {
 
-                        System.out.printf("Nome: %s ID: %d\n",mostrar.getNome(),mostrar.getId());
-
+                        System.out.printf("Nome: %s ID: %d\n", mostrar.getNome(), mostrar.getId());
                     }
 
                     System.out.println("Digite o id do produto: ");
                     int id = entrada.nextInt();
                     e1.buscarId(id);
+                    break;
                 }
+
+                case 4: {
+                    System.out.println("Produtos disponiveis");
+                    for (Produto mostrar : e1.getEstoque()) {
+
+                        System.out.printf("Nome: %s ID: %d\n", mostrar.getNome(), mostrar.getId());
+
+                    }
+
+                    System.out.println("Digite o id do produto que você deseja remover: ");
+                    int id = entrada.nextInt();
+                    e1.removerId(id);
+                    break;
+                }
+                case 5: {
+                    System.out.println("Produtos disponiveis");
+                    for (Produto mostrar : e1.getEstoque()) {
+
+                        System.out.printf("Nome: %s ID: %d\n", mostrar.getNome(), mostrar.getId());
+                    }
+                    System.out.println("Digite o id do produto que você deseja atualizar: ");
+                    int id = entrada.nextInt();
+                    e1.atualizarProduto(id);
+                    break;
+
+                }
+                case 6: {
+                    System.out.println("Sistema finalizado");
+                    rodando = false;
+                }
+                break;
+                default:
+                    System.out.println("Opção inválida ");
+
             }
-
-
         }
     }
 }
