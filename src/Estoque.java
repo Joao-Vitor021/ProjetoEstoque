@@ -22,6 +22,7 @@ public class Estoque {
     }
 
     public Produto buscarId(int id) {
+
         for (Produto buscar : estoque) {
             if (id == buscar.getId()) {
                 System.out.println(buscar + "\n");
@@ -85,7 +86,9 @@ public class Estoque {
 
     }
 
-
+    public ArrayList<Produto> getEstoque() {
+        return estoque;
+    }
 }
 
 
