@@ -35,9 +35,9 @@ public class Estoque {
     }
 
     public void removerId(int id) {
-        for (int i = 0; i <estoque.size(); i++){
+        for (int i = 0; i < estoque.size(); i++) {
             if (estoque.get(i).getId() == id) {
-                System.out.printf("%s removido com sucesso\n",estoque.get(i).getNome());
+                System.out.printf("%s removido com sucesso\n", estoque.get(i).getNome());
                 estoque.remove(i);
 
                 return;
@@ -48,8 +48,15 @@ public class Estoque {
     }
 
     public void atualizarProduto(int id) {
+        if (id < 0) {
+            System.out.println("não e permitido número negativo");
+            return;
+        }
 
         Produto p1 = buscarId(id);
+        if (p1 == null) {
+            return;
+        }
         boolean rodando = true;
         while (rodando) {
             System.out.println("1- Atualizar nome \n2- Atualizar preço \n3- Atualizar quantidade \n4- Finalizar atualizações ");
@@ -67,12 +74,14 @@ public class Estoque {
                 case 2: {
                     System.out.println("Digite o preço novo: ");
                     double preco = entrada.nextDouble();
+                    entrada.nextLine();
                     p1.setPreco(preco);
                     break;
                 }
                 case 3: {
                     System.out.println("Digite a quantidade nova: ");
                     int quant = entrada.nextInt();
+                    entrada.nextLine();
                     p1.setQuant(quant);
                     break;
                 }
@@ -86,13 +95,17 @@ public class Estoque {
                     System.out.println("Opção inválida! ");
             }
         }
-
     }
 
     public ArrayList<Produto> getEstoque() {
         return estoque;
     }
+
+
 }
+
+
+
 
 
 

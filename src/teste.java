@@ -67,6 +67,7 @@ public class teste {
                     }
                     System.out.println("Digite o id do produto que você deseja atualizar: ");
                     int id = entrada.nextInt();
+
                     e1.atualizarProduto(id);
                     break;
 

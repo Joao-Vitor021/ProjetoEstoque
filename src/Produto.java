@@ -57,11 +57,14 @@ public class Produto {
     }
 
     public void setQuant(int quant) {
-        if (quant <= 0) {
+        if (quant < 0) {
             throw new IllegalArgumentException("Erro: QUANTIDADE INVÁLIDA!");
-        } else {
-            this.quant = quant;
+        } else if (quant == 0) {
+            System.out.println("Estoque zerado!");
         }
+
+        this.quant = quant;
+
     }
 
     public int getId() {
