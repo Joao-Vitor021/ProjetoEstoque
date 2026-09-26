@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Produto {
     private static ArrayList<Integer> lista = new ArrayList<>();
+    public static int idconta = 1;
     private int id;
     private String nome;
     private double preco;
@@ -14,11 +15,19 @@ public class Produto {
         this.setNome(nome);
         this.setPreco(preco);
         this.setQuant(quant);
-
         do {
-            this.id = (int) (Math.random() * 10000 + 1);
+            this.id = idconta;
+            idconta++;
         } while (lista.contains(id));
-        lista.add(id);
+        {
+            lista.add(id);
+
+        }
+
+        //do {
+        // this.id = (int) (Math.random() * 10000 + 1);
+        // } while (lista.contains(id));
+        //lista.add(id);
 
     }
 
