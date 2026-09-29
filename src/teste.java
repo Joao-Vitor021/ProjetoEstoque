@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class teste {
@@ -9,7 +10,14 @@ public class teste {
         while (rodando) {
             System.out.println("---CONTROLE DE ESTOQUE---\n");
             System.out.println("1- Adicionar produto \n2- Listar produtos \n3- Buscar produto \n4- Remover produto \n5- Atualizar produto \n6- Finalizar programa ");
-            int opcao = entrada.nextInt();
+            int opcao = 0;
+            try {
+                opcao = entrada.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Valor inválido4");
+                entrada.nextLine();
+                continue;
+            }
             entrada.nextLine();
 
             switch (opcao) {
@@ -19,12 +27,27 @@ public class teste {
 
                     System.out.println("Preço: ");
 
-                    double preco = entrada.nextDouble();
+                    try {
+                        double preco = entrada.nextDouble();
 
-                    System.out.println("Quantidade: ");
-                    int qtd = entrada.nextInt();
+                        System.out.println("Quantidade: ");
+                        int qtd = entrada.nextInt();
 
-                    e1.adicionaProduto(nome, preco, qtd);
+                        e1.adicionaProduto(nome, preco, qtd);
+
+
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Digite informação válida");
+                        entrada.nextLine();
+                        continue;
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite um preço/quantidade válidos");
+                        entrada.nextLine();
+                        continue;
+
+                    }
+
                     break;
 
                 }
