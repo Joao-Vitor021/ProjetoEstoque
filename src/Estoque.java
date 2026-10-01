@@ -23,7 +23,12 @@ public class Estoque {
 
     public Produto buscarId(int id) {
 
+        if (id <= 0) {
+            throw new IllegalArgumentException("Digite um ID maior que zero ");
+        }
+
         for (Produto buscar : estoque) {
+
             if (id == buscar.getId()) {
                 System.out.println(buscar + "\n");
                 return buscar;
@@ -35,6 +40,11 @@ public class Estoque {
     }
 
     public void removerId(int id) {
+
+        if (id <= 0) {
+            throw new IllegalArgumentException("Digite um ID maior que zero ");
+        }
+
         for (int i = 0; i < estoque.size(); i++) {
             if (estoque.get(i).getId() == id) {
                 System.out.printf("%s removido com sucesso\n", estoque.get(i).getNome());
@@ -48,6 +58,12 @@ public class Estoque {
     }
 
     public void atualizarProduto(int id) {
+
+        if (id <= 0) {
+            throw new IllegalArgumentException("Digite um ID maior que zero ");
+        }
+
+
         if (id < 0) {
             System.out.println("não e permitido número negativo");
             return;

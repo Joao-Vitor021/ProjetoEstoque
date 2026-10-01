@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class teste {
+public class Main {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         Estoque e1 = new Estoque();
@@ -14,7 +14,7 @@ public class teste {
             try {
                 opcao = entrada.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Valor inválido4");
+                System.out.println("Valor inválido");
                 entrada.nextLine();
                 continue;
             }
@@ -63,9 +63,21 @@ public class teste {
                         System.out.printf("Nome: %s ID: %d\n", mostrar.getNome(), mostrar.getId());
                     }
 
-                    System.out.println("Digite o id do produto: ");
-                    int id = entrada.nextInt();
-                    e1.buscarId(id);
+                    try {
+                        System.out.println("Digite o id do produto: ");
+                        int id = entrada.nextInt();
+                        e1.buscarId(id);
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite valor válido");
+                        entrada.nextLine();
+                        continue;
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
+                        entrada.nextLine();
+                        continue;
+                    }
+
                     break;
                 }
 
@@ -78,8 +90,20 @@ public class teste {
                     }
 
                     System.out.println("Digite o id do produto que você deseja remover: ");
-                    int id = entrada.nextInt();
-                    e1.removerId(id);
+                    try {
+                        int id = entrada.nextInt();
+                        e1.removerId(id);
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite valor válido");
+                        entrada.nextLine();
+                        continue;
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
+                        entrada.nextLine();
+                        continue;
+
+                    }
+
                     break;
                 }
                 case 5: {
@@ -89,9 +113,21 @@ public class teste {
                         System.out.printf("Nome: %s ID: %d\n", mostrar.getNome(), mostrar.getId());
                     }
                     System.out.println("Digite o id do produto que você deseja atualizar: ");
-                    int id = entrada.nextInt();
+                    try {
+                        int id = entrada.nextInt();
+                        e1.atualizarProduto(id);
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite valor válido");
+                        entrada.nextLine();
+                        continue;
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
+                        entrada.nextLine();
+                        continue;
 
-                    e1.atualizarProduto(id);
+                    }
+
+
                     break;
 
                 }
